@@ -36,7 +36,8 @@ def login_view(request):
             login(request, user)
             
             
-            return render(request,'enseignantDash/EnseignantDash.html')
+            return redirect("listeCours")
+        # updated by achraf redirect 
         else:
             # Gérer le cas où l'authentification échoue
             error ='Invalid username or password'
