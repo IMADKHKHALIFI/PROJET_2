@@ -1,0 +1,56 @@
+{% extends 'enseignantDash/EnseignantDash.html' %}
+{% load static %}
+{% block ajouterCours %}
+<link rel="stylesheet" href="{% static 'css/ajouterCours.css' %}">
+<script src="{% static 'javascript/decision.js' %}"></script>
+
+<div class="ajouterCours">
+    <form action="{% url 'ajouterCours' %}" method="post" onsubmit="return deceder('ajouterCours')" class="ajouterForm">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td class="InfosTd">Module : </td>
+                <td><input type="text" name="module" riquired></td>
+            </tr>
+         
+            <tr>
+                <td class="InfosTd">Filiere: </td>
+                <td>
+                    Filiere : <select name="filiere">
+                        {% for filiere in  filieres %}   
+                                <option value="{{filiere.id_filiere}}">{{filiere.nom_filiere}}</option>
+                        {% endfor %}
+                            </select>
+                </td>
+            </tr>
+       
+            <tr>
+                <td class="InfosTd">Amphithéâtre : </td>
+                <td class="selectTd">
+                  
+                    Salle : <select name="salle">
+                        {% for salle in  salles %}   
+                                <option value="{{salle.id_salle}}">{{salle.id_salle}}</option>
+                        {% endfor %}
+                            </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="InfosTd">Heure debut:  </td>
+                <td class="selectTd">
+                    
+                    <input type="time" name="debut" riquired>
+
+                </td>
+            </tr>
+            <tr>
+                <td class="InfosTd">Heure du fin : </td>
+                <td><input type="time" name="fin" riquired></td>
+            </tr>
+
+        </table>
+        <button type="submit">Ajouter</button>
+    </form>
+</div>
+
+{% endblock ajouterCours %}

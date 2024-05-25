@@ -1,0 +1,43 @@
+{% extends 'enseignantDash/EnseignantDash.html' %}
+{% load static %}
+
+{% block listeEtudiants %}
+
+<link rel="stylesheet" href="{% static 'css/liste_etudiants.css' %}">
+<div class="listeEtudiants">
+    <table>
+        <tr>
+          
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Massar</th>
+            <th>Status</th>
+        </tr>
+        {% for marking in listeAbsences %}
+        <tr>
+            <td>{{ marking.code_massar.first_name }}</td>
+            <td>{{ marking.code_massar.last_name }}</td>
+            <td>{{ marking.code_massar.codeMassar }}</td>
+            <td>{% if marking.status %}
+                Présent
+            {% else %}
+                Absent
+            {% endif %}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">Aucune donnée disponible.</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <div class="envoi">
+        <form action="">
+            <input type="submit" value="imprimer">
+        </form>
+        <form action="">
+            <input type="submit" value="Envoyer a l'administrateur">
+        </form>
+    </div>
+</div>
+
+{% endblock listeEtudiants %}

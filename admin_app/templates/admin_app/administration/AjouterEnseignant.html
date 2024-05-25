@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/adminstrateur.css' %}">
+<link rel="stylesheet" href="{% static 'css/colorVar.css' %}">
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+{% include 'bar.html' %}
+{% include 'admin_app\administration\administration.html' %}
+<div class="main">
+    <div class="form-style-5">
+        <form method="post">
+            {% csrf_token %}
+        <fieldset>
+        <legend><span class="number">1</span> Personnel</legend>
+        <input type="text" name="CNI" placeholder="CNI *" required>
+        <input type="text" name="nom" placeholder="Nom *" required>
+        <input type="text" name="prenom" placeholder="Prenom *" required>
+        <input type="email" name="email" placeholder=" Email *" required>
+        <input type="text" name="adresse" placeholder="Adresse *" required>
+        <label for="job">Interests:</label>
+        </fieldset>
+        <fieldset>
+        <legend><span class="number ">2</span>Filieres</legend>
+        <div class="box">
+        <div onclick="checked(this)">
+            <lable for="sdia1">Sdia</lable><input type="checkbox" id="sdia1" value="sdia1">
+        </div>
+        <div onclick="checked(this)">
+            <lable for="sdia">Sdia</lable><input type="checkbox" id="sdia">
+        </div>
+        <div onclick="checked(this)">
+            <lable for="sdia">Sdia</lable><input type="checkbox" id="sdia">
+        </div>
+        <div onclick="checked(this)">
+            <lable for="sdia">Sdia</lable><input type="checkbox" id="sdia">
+        </div>
+        <div onclick="checked(this)">
+            <lable for="sdia">Sdia</lable><input type="checkbox" id="sdia">
+        </div>
+        <div onclick="checked(this)">
+            <lable for="sdia1">Sdia</lable><input type="checkbox" id="sdia1" value="sdia1">
+        </div>
+        <div onclick="checked(this)">
+            <lable for="sdia">Sdia</lable><input type="checkbox" id="sdia">
+        </div>
+        <div onclick="checked(this)">
+            <lable for="sdia">Sdia</lable><input type="checkbox" id="sdia">
+        </div>
+        <div onclick="checked(this)">
+            <lable for="sdia">Sdia</lable><input type="checkbox" id="sdia">
+        </div>
+        <div onclick="checked(this)">
+            <lable for="sdia">Sdia</lable><input type="checkbox" id="sdia">
+        </div>
+        <div onclick="checked(this)">
+            <lable for="sdia1">Sdia</lable><input type="checkbox" id="sdia1" value="sdia1">
+        </div>
+        <div onclick="checked(this)">
+            <lable for="sdia">Sdia</lable><input type="checkbox" id="sdia">
+        </div>
+        <div onclick="checked(this)">
+            <lable for="sdia">Sdia</lable><input type="checkbox" id="sdia">
+        </div>
+        <div onclick="checked(this)">
+            <lable for="sdia">Sdia</lable><input type="checkbox" id="sdia">
+        </div>
+        <div onclick="checked(this)">
+            <lable for="sdia">Sdia</lable><input type="checkbox" id="sdia">
+        </div>
+        <div onclick="checked(this)">
+            <lable for="sdia1">Sdia</lable><input type="checkbox" id="sdia1" value="sdia1">
+        </div>
+        <div onclick="checked(this)">
+            <lable for="sdia">Sdia</lable><input type="checkbox" id="sdia">
+        </div>
+        <div onclick="checked(this)">
+            <lable for="sdia">Sdia</lable><input type="checkbox" id="sdia">
+        </div>
+        <div onclick="checked(this)">
+            <lable for="sdia">Sdia</lable><input type="checkbox" id="sdia">
+        </div>
+        <div onclick="checked(this)">
+            <lable for="sdia">Sdia</lable><input type="checkbox" id="sdia">
+        </div>
+        </div>
+        </fieldset>
+        <fieldset>
+            <legend><span class="number ">3</span>Modeles</legend>
+            <div class="box">
+            <div onclick="checked(this)">
+                <lable for="python">Sdia</lable><input type="checkbox" id="python" value="python">
+            </div>
+            <div onclick="checked(this)">
+                <lable for="django">django</lable><input type="checkbox" id="django">
+            </div>
+            <div onclick="checked(this)">
+                <lable for="sdia">Sdia</lable><input type="checkbox" id="sdia">
+            </div>
+            <div onclick="checked(this)">
+                <lable for="sdia">Sdia</lable><input type="checkbox" id="sdia">
+            </div>
+            <div onclick="checked(this)">
+                <lable for="sdia">Sdia</lable><input type="checkbox" id="sdia">
+            </div>
+            </div>
+            </fieldset>
+            <fieldset>
+                    <legend><span class="number ">4</span>Groups</legend>
+                    <div class="box">
+                    <div onclick="checked(this)">
+                        <lable for="group1">G1</lable><input type="checkbox" id="group1" value="group1">
+                    </div>
+                    <div onclick="checked(this)">
+                        <lable for="group2">group2</lable><input type="checkbox" id="group2">
+                    </div>
+                    <div onclick="checked(this)">
+                        <lable for="G?">G?</lable><input type="checkbox" id="G?">
+                    </div>
+                    <div onclick="checked(this)">
+                        <lable for="G?">G?</lable><input type="checkbox" id="G?">
+                    </div>
+                    <div onclick="checked(this)">
+                        <lable for="G?">G?</lable><input type="checkbox" id="G?">
+                    </div>
+                    </div>
+            </fieldset>
+        <input type="submit" value="Ajouter Enseignant" />
+        </form>
+        </div>
+
+<script src="{% static 'js/administrateur.js' %}"></script>
+{% endblock content %}
