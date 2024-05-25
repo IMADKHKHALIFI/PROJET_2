@@ -23,7 +23,7 @@
             <td>{{ cour.classsession_set.first.classroom.id_salle }}</td>
             <td><a href="{% url 'modifierCours' %}">modifier</a></td>
             <td><a onclick="return deceder('supprimer')">supprimer</a></td>
-            <td><a href="{% url 'ListeEtudiants' %}" onclick="return deceder('lancerAbsence')">Lancer Cam</a></td>
+            <td><a href="{% url 'seanceDeCours' %}" onclick="return deceder('lancerAbsence')">Lancer Cam</a></td>
         </tr>
     {% endfor %}    
         

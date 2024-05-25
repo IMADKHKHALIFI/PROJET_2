@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
-# from student_app.activated_camera import camera_maked,preprocess_student_images
+from student_app.activated_camera import camera_maked,preprocess_student_images
 from admin_app.models import Teacher
 from student_app.models import (
     Student,Classroom,Module,ClassSession,ModuleAssociate,Filiere)
@@ -144,7 +144,5 @@ def seanceDeCours(request):
     student_encodings = preprocess_student_images()
     teacher = request.user
     camera_maked(student_encodings,teacher)
-    return render(request,'admin_app/page_teacher.html',{})
-    
-
+    return redirect('ListeEtudiants')
 
