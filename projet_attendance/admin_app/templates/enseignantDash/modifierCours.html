@@ -4,50 +4,41 @@
 <link rel="stylesheet" href="{% static 'css/ajouterCours.css' %}">
 <script src="{% static 'javascript/decision.js' %}"></script>
 <div class="ajouterCours">
-    <form onsubmit="return deceder('modification')">
+    <form action= "" method ="POST" onsubmit="return deceder('modification')">
+        {% csrf_token %}
         <table>
             <tr>
-                <td class="InfosTd">Module : </td>
-                <td><input type="text" name="module" value="Programmation"></td>
+                <td class="InfosTd">Filiere : </td> 
+                <td><input type="text" name="filiere" value="{{filiere_nom}}"></td>
+            </tr>
+            <tr>
+                <td class="InfosTd">Module : </td> 
+                <td><input type="text" name="module" value="{{module_name}}"></td>
             </tr>
             <tr>
                 <td class="InfosTd">Amphithéâtre : </td>
                 <td class="selectTd">
-                    Block : <select name="block">
-                                <option value="">Block 1</option>
-                                <option value="">Block 2</option>
-                                <option value="">Block 3</option>
-                                <option value="">Block 4</option>
-                            </select>
-                    Salle : <select name="salle">
-                                <option value="">Salle 2</option>
-                                <option value="">Salle 1</option>
-                                <option value="">Salle 3</option>
-                                <option value="">Salle 4</option>
-                            </select>
+                 <select name="salle">
+                    {% for salle in salles  %}
+                        <option value="{{salle.id_salle}}">{{salle.id_salle}}</option>
+                    {% endfor %}
+                </select>
                 </td>
             </tr>
             <tr>
-                <td class="InfosTd">Créneau horaire : </td>
+                <td class="InfosTd">Heure Debut: </td>
                 <td class="selectTd">
-                    Début du cours : <select name="debut">
-                                        <option value="">08:30</option>
-                                        <option value="">10:45</option>
-                                        <option value="">14:00</option>
-                                        <option value="">16:15</option>
-                                    </select>
-                    Durée : <select name="duree">
-                                <option value="">2h</option>
-                                <option value="">4h</option>
-                            </select>
+                    <input type ="text" value="{{debut}}">
                 </td>
             </tr>
-            <tr>
-                <td class="InfosTd">Date du cours : </td>
-                <td><input type="date" name="dateCours" value="25/05/2024"></td>
+            <tr> 
+                <td class="InfosTd">Heure Fin: </td>
+                <td class="selectTd">
+                    <input type ="text" value="{{fin}}">
+                </td>
             </tr>
         </table>
-        <button type="submit"><a href="">Modifier</a></button>
+        <button type="submit">Modifier</button>
     </form>
 </div>
 

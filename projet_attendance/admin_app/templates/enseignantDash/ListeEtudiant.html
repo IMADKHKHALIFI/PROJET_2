@@ -7,40 +7,28 @@
 <div class="listeEtudiants">
     <table>
         <tr>
-            <th>id</th>
+          
             <th>Nom</th>
             <th>Prenom</th>
             <th>Massar</th>
             <th>Status</th>
         </tr>
+        {% for marking in listeAbsences %}
         <tr>
-            <td>1</td>
-            <td>Oumoulay</td>
-            <td>Rashid</td>
-            <td>M9834780</td>
-            <td>Présent</td>
+            <td>{{ marking.code_massar.first_name }}</td>
+            <td>{{ marking.code_massar.last_name }}</td>
+            <td>{{ marking.code_massar.codeMassar }}</td>
+            <td>{% if marking.status %}
+                Présent
+            {% else %}
+                Absent
+            {% endif %}</td>
         </tr>
+        {% empty %}
         <tr>
-            <td>1</td>
-            <td>Oumoulay</td>
-            <td>Rashid</td>
-            <td>M9834780</td>
-            <td>Présent</td>
+            <td colspan="4">Aucune donnée disponible.</td>
         </tr>
-        <tr>
-            <td>1</td>
-            <td>Oumoulay</td>
-            <td>Rashid</td>
-            <td>M9834780</td>
-            <td>Présent</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>Oumoulay</td>
-            <td>Rashid</td>
-            <td>M9834780</td>
-            <td>Présent</td>
-        </tr>
+        {% endfor %}
     </table>
     <div class="envoi">
         <form action="">

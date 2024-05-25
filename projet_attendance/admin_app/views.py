@@ -2,8 +2,9 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from student_app.activated_camera import camera_maked,preprocess_student_images
 from admin_app.models import Teacher
+from datetime import date
 from student_app.models import (
-    Student,Classroom,Module,ClassSession,ModuleAssociate,Filiere)
+    Student,Classroom,Module,ClassSession,ModuleAssociate,Filiere,Marking)
 from django.contrib.auth import (
     get_user_model,login,logout,authenticate
     )
@@ -130,7 +131,18 @@ def ajouterCours(request):
     return render(request, 'enseignantDash/AjouterCours.html', {'salles': salles,'filieres' : filieres})
 
 def modifierCours(request) : 
-    return render(request , 'enseignantDash/modifierCours.html')
+    cours = Module.objects.all()
+    if request.method == "POST":
+        filiere_nom = request.POST.get('filiere_nom')
+        module_name = request.POST.get('module_name')
+        id_salle = request.POST.get('id_salle')
+        debut = request.POST.get('debut')
+        fin = request.POST.get('fin')
+        salles = Classroom.objects.all()
+        filieres = Filiere.objects.all()
+        return render(request , 'enseignantDash/modifierCours.html',{'filiere_nom' : filiere_nom, 'module_name' : module_name, 'id_salle' : id_salle, 'debut' : debut,'fin' : fin,'salles' : salles})
+
+    return render(request , 'enseignantDash/ListeCours.html',{'cours' : cours})
 
 def remarque(request) : 
     return render(request , 'enseignantDash/Remarque.html')
@@ -140,9 +152,28 @@ def ListeEtudiants(request) :
 # **********************************************
 
 def seanceDeCours(request):
-    
+    cours = Module.objects.all()
     student_encodings = preprocess_student_images()
     teacher = request.user
     camera_maked(student_encodings,teacher)
-    return redirect('ListeEtudiants')
+    if request.method == 'POST':
+        # Obtenez la filière sélectionnée dans le formulaire
+        id_filiere = request.POST.get('filiere')
+        current_date = date.today()
+        
+        # Assurez-vous que l'identifiant de la filière est un entier
+        if id_filiere is not None:
+            id_filiere = int(id_filiere)
+
+        # Filtrer les marqueurs par la date actuelle et l'identifiant de la filière
+        if id_filiere is not None:
+            listeAbsences = Marking.objects.filter(date_marked=current_date, code_massar__filiere_id=id_filiere)
+        else:
+            listeAbsences = Marking.objects.none()  # Si aucun paramètre n'est fourni, renvoyer une liste vide
+        
+        # Ensuite, vous pouvez effectuer d'autres opérations ou afficher la liste des absences
+        return render(request, 'enseignantDash/ListeEtudiant.html', {'listeAbsences': listeAbsences})
+    
+    return render(request, 'enseignantDash/ListeCours.html', {'cours': cours})
+
 
