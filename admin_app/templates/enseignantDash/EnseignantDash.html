@@ -12,9 +12,8 @@
         <ul>
             <li class="active"><a href="{% url 'listeCours' %}" name="lien"  {% if request.path == "/ListeCours/" %} class="activeEnseignant" {% endif %}>Liste des cours</a></li>
             <li><a href="{% url 'ajouterCours' %}" name="lien"  {% if request.path == "/AjouterCours/" %} class="activeEnseignant" {% endif %}>Ajouter un cours</a></li>
-            <li><a href="{% url 'remarque' %}" name="lien" {% if request.path == "/remarque/" %} class="activeEnseignant" {% endif %}>Remarque</a></li>
         </ul>
-        <div class="Deconnection"> <a href="">Deconnexion</a></div>
+        <div class="Deconnection"> <a href="{% url 'logout_user' %}">Deconnexion</a></div>
     </div>
     <main>
         <div class="head1">
@@ -25,11 +24,11 @@
             <div class="profil">
                 <img src="{% static 'image/profil1.jpg' %}" alt="profil">
 <<<<<<< HEAD
-                <div class="nomProf">AYYOUB $ Rashid</div>
+                <div class="nomProf">{{user}} </div>
+            </div>
 =======
                 <div class="nomProf">Rashid</div>
->>>>>>> 5da2088a835957f8855f20ff368f10a06f7d0a1a
-            </div>
+>>>>>>> 8b33cde (25/O5 21:44)
             <div class="search">
                 <form action="">
                     <input type="text" placeholder="Rechercher" name="recherche">
@@ -42,10 +41,10 @@
 
         {% block ajouterCours %}
         {% endblock ajouterCours %}
-
+<!--
         {% block remarque %}
         {% endblock remarque %}
-
+-->
         {% block listeEtudiants %}
         {% endblock listeEtudiants %}
 

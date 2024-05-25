@@ -36,7 +36,8 @@ def login_view(request):
             login(request, user)
             
             
-            return render(request,'enseignantDash/EnseignantDash.html')
+            return redirect("listeCours")
+        # updated by achraf redirect 
         else:
             # Gérer le cas où l'authentification échoue
             error ='Invalid username or password'
@@ -46,6 +47,7 @@ def login_view(request):
 
 @login_required
 def logout_user(request):#champs à definir
+    print("deconnexion")
     logout(request)
     return redirect('home')
 
@@ -70,8 +72,6 @@ def register_view(request):
         login(request, user)
 
         # Rediriger vers la page d'accueil
-        return render(request,"enseignantDash/EnseignantDash.html")
-        #return redirect('home')
         return redirect('login')
 
     # Si la méthode de la requête n'est pas POST, afficher le formulaire vide
@@ -144,8 +144,17 @@ def modifierCours(request) :
 
     return render(request , 'enseignantDash/ListeCours.html',{'cours' : cours})
 
-def remarque(request) : 
-    return render(request , 'enseignantDash/Remarque.html')
+def supprimerCour(request):
+    if request.method == "POST":
+        id_module_str = request.POST.get('id_module')
+        if id_module_str is not None:
+            id_module = int(id_module_str)
+            module = Module.objects.get(id_module=id_module)
+            module.delete()
+            return redirect('listeCours')
+        else:
+            return render(request, 'enseignantDash/ListeCours.html')
+    return render(request, 'enseignantDash/ListeCours.html')
 
 def ListeEtudiants(request) :
     return render(request , 'enseignantDash/ListeEtudiant.html')
