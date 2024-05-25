@@ -1,0 +1,32 @@
+{% extends 'enseignantDash/EnseignantDash.html' %}
+{% load static %}
+{% block listeCours %}
+
+
+<script src="{% static 'javascript/decision.js' %}"></script>
+<div class="listeCours">
+    <table>
+        <tr>
+            <th>Filière</th>
+            <th>Modoule</th>
+            <th>Horaires</th>
+            <th>Salle</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% for cour in cours %}
+        <tr>
+            <td>{{ cour.filiere.nom_filiere }}</td>
+            <td>{{ cour.module_name }}</td>
+            <td>{{ cour.classsession_set.first.heureDebut }} - {{ cour.classsession_set.first.heureFin }}</td>
+            <td>{{ cour.classsession_set.first.classroom.id_salle }}</td>
+            <td><a href="{% url 'modifierCours' %}">modifier</a></td>
+            <td><a onclick="return deceder('supprimer')">supprimer</a></td>
+            <td><a href="{% url 'ListeEtudiants' %}" onclick="return deceder('lancerAbsence')">Lancer Cam</a></td>
+        </tr>
+    {% endfor %}    
+        
+    </table>
+</div>
+{% endblock listeCours %}

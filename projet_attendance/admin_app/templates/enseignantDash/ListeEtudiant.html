@@ -1,0 +1,55 @@
+{% extends 'EnseignantDash/EnseignantDash.html' %}
+{% load static %}
+
+{% block listeEtudiants %}
+
+<link rel="stylesheet" href="{% static 'css/liste_etudiants.css' %}">
+<div class="listeEtudiants">
+    <table>
+        <tr>
+            <th>id</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Massar</th>
+            <th>Status</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Oumoulay</td>
+            <td>Rashid</td>
+            <td>M9834780</td>
+            <td>Présent</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Oumoulay</td>
+            <td>Rashid</td>
+            <td>M9834780</td>
+            <td>Présent</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Oumoulay</td>
+            <td>Rashid</td>
+            <td>M9834780</td>
+            <td>Présent</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Oumoulay</td>
+            <td>Rashid</td>
+            <td>M9834780</td>
+            <td>Présent</td>
+        </tr>
+    </table>
+    <div class="envoi">
+        <form action="">
+            <input type="submit" value="imprimer">
+        </form>
+        <form action="">
+            <input type="submit" value="Envoyer a l'administrateur">
+        </form>
+    </div>
+</div>
+
+{% endblock listeEtudiants %}

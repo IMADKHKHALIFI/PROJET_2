@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etudiant</title>
+    <link rel="stylesheet" href="{% static 'css/style_etudiant.css' %}">
+</head>
+
+<body>
+    <div class="sidebar">
+        <div>
+            <div class="logo">LOGO</div>
+            <div class="section">
+                <a href="{% url 'emploi_du_temps' %}">
+                    <button>Emploi du temps</button>
+                </a>
+                <a href="{% url 'liste_des_modules' %}">
+                <button>Liste du Modèle</button>
+            </a>
+
+            </div>
+        </div>
+        <div class="section">
+            <button>Deconnexion</button>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="navbar">
+            <div class="search-container">
+                <label for="search">Rechercher:</label>
+                <input type="text" id="search" placeholder="Rechercher...">
+            </div>
+            <div class="student-photo">
+                <img src="{% static 'images/student-photo.jpg' %}" alt="Photo d'étudiant">
+            </div>
+        </div>
+        <main>
+            {% block emploi_du_temps %}
+            {% endblock emploi_du_temps %}
+
+            {% block liste_des_modules %}
+            {% endblock liste_des_modules %}
+        </main>
+    </div>
+</body>
+
+</html>

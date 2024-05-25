@@ -1,0 +1,26 @@
+.listeEtudiants{
+    width: 100%;
+    margin-top: 100px;
+}
+.listeEtudiants table{
+    width: 100%;
+}
+.listeEtudiants table th{
+    background-color: cadetblue;
+}
+.envoi{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+.envoi form{
+    margin-top: 50px;
+    margin-right: 100px;
+}
+.envoi form input[type="submit"]{
+    padding: 10px 5px;
+    cursor: pointer;
+    width: 200px;
+    border-radius: 8px;
+    background-color: cadetblue;
+}

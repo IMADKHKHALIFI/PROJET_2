@@ -1,0 +1,27 @@
+{% extends 'enseignantDash/EnseignantDash.html' %}
+{% load static %}
+{% block remarque %}
+<link rel="stylesheet" href="{% static 'css/remarque.css' %}">
+<script src="{% static 'javascript/decision.js' %}"></script>
+
+
+
+<div class="remarque">
+    <div class="navMessage">
+        <div class="message">Boite de réception</div>
+        <div class="message">Envoyés</div>
+        <div class="creerMessage">Créer message</div>
+    </div>
+    <div class="infos">
+        <textarea id="remarques" rows="4" cols="50" placeholder="Écrivez vos remarques ici..."></textarea>
+        <label for="destinataire">Destinataire :</label>
+        <select name="destinataire">
+            <option value="">Tous</option>
+            <option value="">Administrateur</option>
+            <option value="">Enseignants</option>
+            <option value="">Etudiants</option>
+        </select>
+    </div>
+    <button onclick="deceder('remarque')"><a href="Remarque.html" >Envoyer</a></button>
+</div>
+{% endblock remarque %}
